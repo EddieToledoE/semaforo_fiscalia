@@ -1,10 +1,20 @@
 #root {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   /* align-items: center;
   justify-content: center; */
   height: 100vh;
   background-color: #79E0EE;
+  overflow-x: hidden;
+
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Oculta el desbordamiento horizontal que no deseas */
+  overflow-y: auto; /* Muestra la barra de desplazamiento vertical solo si es necesario */
+  height: 100%; /* Asegura que el <body> se extienda por toda la altura de la ventana del navegador */
 }
 
 .clouds-container {

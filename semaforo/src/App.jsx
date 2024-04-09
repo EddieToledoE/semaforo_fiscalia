@@ -20,7 +20,7 @@ function App() {
     <div className='button-container'>
     <motion.button
      whileHover={{ scale: 1.1 }}
-     whileTap={{ scale: 0.9 }}
+     whileTap={{ scale: 1.9 }}
      className='start-button'>Iniciar</motion.button>
     </div>
   </div>

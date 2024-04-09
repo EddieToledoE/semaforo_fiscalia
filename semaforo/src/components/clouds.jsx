@@ -1,36 +1,44 @@
-import Nube1 from '../assets/Nube1.svg'
-import Nube2 from '../assets/Nube2.svg'
-import Nube3 from '../assets/Nube3.svg'
-import Nube4 from '../assets/Nube4.svg'
-import { motion } from "framer-motion"
-function App() {
-  
-    return (
-      <>
-    <motion.div
-    initial={{ y: 100 }}
-    animate={{ x: [0, 1800]}}
-    transition={{ yoyo: Infinity, duration: 40, repeat: Infinity}}
-    className='cloud1-container'>
-    <img src={Nube1} alt="" />
-    </motion.div>
-    <div className='cloud2-container'>
-    <img src={Nube2} alt="" />
-    </div>
-    <motion.div
-     initial={{ y: 150 }}
-     animate={{ x: [0, 500]}}
-     transition={{ yoyo: Infinity, duration: 20, repeat: Infinity}}
-     className='cloud3-container'>
-    <img src={Nube3} alt="" />
-    </motion.div>
-    <div className='cloud4-container'>
-    <img src={Nube4} alt="" />
-    </div>
+import React, { useEffect, useState } from 'react';
+import Nube1 from '../assets/Nube1.svg';
+import Nube2 from '../assets/Nube2.svg';
+import Nube3 from '../assets/Nube3.svg';
+import Nube4 from '../assets/Nube4.svg';
+import { motion } from "framer-motion";
 
-  
-      </>
-    )
-  }
-  
-  export default App
+function App() {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Ajustes individuales para cada nube
+  const cloudSettings = [
+    { id: 1, yOffset: 100, xOffset: screenWidth },
+    { id: 2, yOffset: 110, xOffset: screenWidth - 100 }, // Asumiendo dimensiones específicas
+    { id: 3, yOffset: 100, xOffset: screenWidth - 200 },
+    { id: 4, yOffset: 120, xOffset: screenWidth - 300 },
+  ];
+
+  return (
+    <>
+      {cloudSettings.map((cloud) => (
+        <motion.div
+          key={cloud.id}
+          initial={{ y: cloud.yOffset, x: -200 }} // Iniciar fuera de la pantalla
+          animate={{ x: [0, screenWidth - 100] }} // -100 para asegurar que llegue al final de la pantalla antes de reiniciar
+          transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse', repeatDelay: 0}}
+          className={`cloud${cloud.id}-container`}>
+          <img src={eval(`Nube${cloud.id}`)} alt="" />
+        </motion.div>
+      ))}
+    </>
+  );
+}
+
+export default App;
