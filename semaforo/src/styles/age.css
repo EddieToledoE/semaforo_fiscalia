@@ -1,0 +1,36 @@
+/* Styles for age selection buttons */
+.age-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 32px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  background-color: yellow;
+}
+
+.age-button:hover {
+  background-color: #e0e0e0;
+}
+
+.age-button.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Styles for age selection interface */
+.age-selection {
+  margin: 20px 0;
+}
+
+.age-selection-label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.age-selection-buttons {
+  margin-top: 10px;
+}

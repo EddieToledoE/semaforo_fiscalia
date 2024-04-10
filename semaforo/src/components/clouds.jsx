@@ -19,10 +19,10 @@ function App() {
 
   // Ajustes individuales para cada nube
   const cloudSettings = [
-    { id: 1, yOffset: 100, xOffset: screenWidth },
-    { id: 2, yOffset: 110, xOffset: screenWidth - 300 }, // Asumiendo dimensiones específicas
-    { id: 3, yOffset: 100, xOffset: screenWidth - 400 },
-    { id: 4, yOffset: 120, xOffset: screenWidth - 500 },
+    { id: 1, yOffset: 0, xOffset: screenWidth },
+    { id: 2, yOffset: 30, xOffset: screenWidth - 350 }, // Asumiendo dimensiones específicas
+    { id: 3, yOffset: 20, xOffset: screenWidth - 450 },
+    { id: 4, yOffset: 15, xOffset: screenWidth - 550 },
   ];
 
   return (
@@ -40,7 +40,7 @@ function App() {
           }}
           className={`cloud${cloud.id}-container`}
         >
-          <img src={eval(`Nube${cloud.id}`)} alt="" />
+          <img className="clouds_img" src={eval(`Nube${cloud.id}`)} alt="" />
         </motion.div>
       ))}
     </>

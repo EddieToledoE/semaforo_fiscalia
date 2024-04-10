@@ -26,6 +26,12 @@ body {
   /* border: solid 1px black;  */
 }
 
+.clouds_img {
+  width: 85%;
+  height: 85%;
+  /* border: solid 1px black; */
+}
+
 .Big-Tittle {
   font-size: 110px;
   font-weight: bold;
