@@ -5,7 +5,7 @@ import "../styles/age.css";
 function Body() {
   return (
     <div className="body-container">
-      <img src={BodyIMG} alt="" />
+      <img className="body-img" src={BodyIMG} alt="" />
     </div>
   );
 }
