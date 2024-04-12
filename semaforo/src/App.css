@@ -1,21 +1,19 @@
 #root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  /* align-items: center;
-  justify-content: center; */
-  height: 100vh;
   background-color: #79e0ee;
+  overflow-y: hidden;
   overflow-x: hidden;
 }
-html,
-body {
+html, body, #root {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Oculta el desbordamiento horizontal que no deseas */
-  overflow-y: auto; /* Muestra la barra de desplazamiento vertical solo si es necesario */
-  height: 100%; /* Asegura que el <body> se extienda por toda la altura de la ventana del navegador */
+  overflow-x: hidden; 
+  overflow-y: hidden; 
+  height: 100%; 
+  min-height: 100vh;
 }
+
 
 .clouds-container {
   display: flex;
@@ -36,7 +34,7 @@ body {
   font-size: 110px;
   font-weight: bold;
   color: #333232;
-  text-align: center;
+  text-align: left;
   margin: 0px;
   font-family: cursive;
 }
@@ -45,13 +43,13 @@ body {
   font-size: 60px;
   font-weight: bold;
   color: #333232;
-  text-align: center;
+  text-align: left;
   margin: 0px;
   font-family: cursive;
 }
 .Tittle-container {
   display: inline;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   height: auto;
   padding: 0px;
@@ -59,7 +57,7 @@ body {
 }
 .button-container {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   height: auto;
   padding: 20px;

@@ -1,10 +1,141 @@
 .body-container {
-  display: flex;
+  position: relative;
+  overflow-y: auto;
+  overflow: hidden; 
+  width: 100vw;
+  height: 100vh; 
   justify-content: center;
   align-items: center;
 }
 
+
 .body-img {
-  max-width: 100%;
+  position: absolute; /* Cambiado de 'fixed' a 'absolute' */
   height: 80%;
+  width: 80%;
+  left: 100px;
+  z-index: 2;
+}
+
+.head {
+  position: absolute; /* Añadido 'position: absolute;' */
+  top: 9%;
+  left: 47%;
+  width: 60px;
+  height: 40px;
+  border-radius: 60%;
+  background-color: black;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.cuello {
+  position: absolute; /* Añadido 'position: absolute;' */
+  top: 110px;
+  left: 480px;
+  width: 60px;
+  height: 40px;
+  border-radius: 60%;
+  background-color: rgb(255, 4, 4);
+  z-index: 3;
+  cursor: pointer;
+}
+
+.pecho {
+  position: absolute; /* Añadido 'position: absolute;' */
+  top: 150px;
+  left: 435px;
+  width: 150px;
+  height: 80px;
+  border-radius: 60%;
+  background-color: rgb(255, 196, 0);
+  z-index: 3;
+  cursor: pointer;
+}
+.bajos {
+  position: absolute; /* Añadido 'position: absolute;' */
+  top: 280px;
+  left: 440px;
+  width: 140px;
+  height: 140px;
+  border-radius: 60%;
+  background-color: rgb(56, 45, 7);
+  z-index: 3;
+  cursor: pointer;
+}
+
+.pierna-izq {
+  position: absolute; /* Añadido 'position: absolute;' */
+  top: 380px;
+  left: 445px;
+  width: 60px;
+  height: 100px;
+  border-radius: 60%;
+  background-color: rgb(12, 219, 64);
+  z-index: 3;
+  cursor: pointer;
+}
+.pierna-der {
+  position: absolute; /* Añadido 'position: absolute;' */
+  top: 380px;
+  left: 520px;
+  width: 60px;
+  height: 100px;
+  border-radius: 60%;
+  background-color: rgb(52, 82, 59);
+  z-index: 3;
+  cursor: pointer;
+}
+.mano-der {
+  position: absolute; /* Añadido 'position: absolute;' */
+  top: 310px;
+  left: 585px;
+  width: 60px;
+  height: 100px;
+  border-radius: 60%;
+  background-color: rgb(103, 55, 156);
+  z-index: 3;
+  cursor: pointer;
+}
+
+.mano-izq {
+  position: absolute; /* Añadido 'position: absolute;' */
+  top: 310px;
+  left: 375px;
+  width: 60px;
+  height: 100px;
+  border-radius: 60%;
+  background-color: rgb(218, 25, 160);
+  z-index: 3;
+  cursor: pointer;
+}
+
+.alert-message {
+  position: fixed;
+  top: 20%;
+  left: 0;
+  transform: translateX(0%); /* Cambiado para animar desde el lado */
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  border-radius: 0px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100; /* Asegúrate de que es suficientemente alto para estar por encima de otros elementos */
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+
+.alert-red {
+  background-color: #ff4d4f;
+}
+
+.alert-orange {
+  background-color: #ffa940;
+}
+
+.alert-yellow {
+  background-color: #ffc53d;
 }

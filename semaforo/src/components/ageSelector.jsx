@@ -1,33 +1,32 @@
 import React, { useState } from "react";
 import "../styles/age.css";
-function AgeSelector() {
-  const [selectedAge, setSelectedAge] = useState("");
+// En AgeSelector.js
+function AgeSelector({ onAgeSelected }) { // Añade onAgeSelected como prop
 
   const handleAgeSelection = (age) => {
-    setSelectedAge(age);
+    onAgeSelected(age); // Llama a la función pasada por props en lugar de usar el estado local
   };
 
   return (
     <div className="age-selection">
-      {selectedAge ? null : (
-        <>
-          <button
-            className="age-button"
-            onClick={() => handleAgeSelection("infantes")}
-          >
-            Infantes
-          </button>
-          <button
-            className="age-button"
-            onClick={() => handleAgeSelection("adolescentes")}
-          >
-            Adolescentes
-          </button>
-        </>
-      )}
-      {selectedAge && <p>Edad Elegida: {selectedAge}</p>}
+      <>
+      <h1 className="Tittle">Rango de edad</h1>
+        <button
+          className="age-button"
+          onClick={() => handleAgeSelection("infantes")}
+        >
+          Infantes
+        </button>
+        <button
+          className="age-button"
+          onClick={() => handleAgeSelection("adolescentes")}
+        >
+          Adolescentes
+        </button>
+      </>
     </div>
   );
 }
+
 
 export default AgeSelector;
