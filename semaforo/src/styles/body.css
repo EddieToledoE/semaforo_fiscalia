@@ -1,13 +1,12 @@
 .body-container {
   position: relative;
   overflow-y: auto;
-  overflow: hidden; 
+  overflow: hidden;
   width: 100vw;
-  height: 100vh; 
+  height: 100vh;
   justify-content: center;
   align-items: center;
 }
-
 
 .body-img {
   position: absolute; /* Cambiado de 'fixed' a 'absolute' */
@@ -24,7 +23,7 @@
   width: 60px;
   height: 40px;
   border-radius: 60%;
-  background-color: black;
+  /* background-color: black; */
   z-index: 3;
   cursor: pointer;
 }
@@ -36,7 +35,7 @@
   width: 60px;
   height: 40px;
   border-radius: 60%;
-  background-color: rgb(255, 4, 4);
+  /* background-color: rgb(255, 4, 4); */
   z-index: 3;
   cursor: pointer;
 }
@@ -48,7 +47,6 @@
   width: 150px;
   height: 80px;
   border-radius: 60%;
-  background-color: rgb(255, 196, 0);
   z-index: 3;
   cursor: pointer;
 }
@@ -59,7 +57,7 @@
   width: 140px;
   height: 140px;
   border-radius: 60%;
-  background-color: rgb(56, 45, 7);
+  /* background-color: rgb(56, 45, 7); */
   z-index: 3;
   cursor: pointer;
 }
@@ -71,7 +69,7 @@
   width: 60px;
   height: 100px;
   border-radius: 60%;
-  background-color: rgb(12, 219, 64);
+  /* background-color: rgb(12, 219, 64); */
   z-index: 3;
   cursor: pointer;
 }
@@ -82,7 +80,7 @@
   width: 60px;
   height: 100px;
   border-radius: 60%;
-  background-color: rgb(52, 82, 59);
+  /* background-color: rgb(52, 82, 59); */
   z-index: 3;
   cursor: pointer;
 }
@@ -93,7 +91,7 @@
   width: 60px;
   height: 100px;
   border-radius: 60%;
-  background-color: rgb(103, 55, 156);
+  /* background-color: rgb(103, 55, 156); */
   z-index: 3;
   cursor: pointer;
 }
@@ -105,7 +103,7 @@
   width: 60px;
   height: 100px;
   border-radius: 60%;
-  background-color: rgb(218, 25, 160);
+  /* background-color: rgb(218, 25, 160); */
   z-index: 3;
   cursor: pointer;
 }
@@ -126,7 +124,6 @@
   font-size: 16px;
   line-height: 1.4;
 }
-
 
 .alert-red {
   background-color: #ff4d4f;
