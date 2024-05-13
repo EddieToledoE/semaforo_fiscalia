@@ -3,13 +3,14 @@ import Nubes from "./components/clouds";
 import Highway from "./components/highway";
 import Semaforo from "./components/semaforo";
 import AgeSelector from "./components/ageSelector";
-import Tittle from './components/tittle';
+import Tittle from "./components/tittle";
 import { motion } from "framer-motion";
 import "./App.css";
 import Body from "./components/body";
 
 function App() {
   const [selectedAge, setSelectedAge] = useState(""); // Estado para almacenar la edad seleccionada
+  const [alertLevel, setAlertLevel] = useState(""); // Estado para almacenar el nivel de alerta
 
   const handleAgeSelection = (age) => {
     setSelectedAge(age); // Función para actualizar la edad seleccionada
@@ -17,6 +18,10 @@ function App() {
 
   const handleStart = () => {
     setSelectedAge("selecting"); // Usamos un estado intermedio para saber que estamos en selección
+  };
+
+  const handleAlert = (level) => {
+    setAlertLevel(level); // Función para establecer el nivel de alerta
   };
 
   return (
@@ -43,11 +48,13 @@ function App() {
         {selectedAge === "selecting" && ( // Muestra el selector de edad si el estado es 'selecting'
           <AgeSelector onAgeSelected={handleAgeSelection} />
         )}
-        {selectedAge && selectedAge !== "selecting" && ( // Muestra el componente Body si se ha seleccionado una edad
-         <Body selectedAge={selectedAge} />// Puedes pasar la edad seleccionada como prop si necesitas
-        )}
+        {selectedAge &&
+          selectedAge !== "selecting" && ( // Muestra el componente Body si se ha seleccionado una edad
+            <Body selectedAge={selectedAge} onAlert={handleAlert} /> // Pasamos la función handleAlert como prop
+          )}
         <Highway />
-        <Semaforo />
+        <Semaforo alertLevel={alertLevel} />{" "}
+        {/* Pasamos el nivel de alerta como prop */}
       </div>
     </>
   );
