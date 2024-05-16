@@ -1,9 +1,11 @@
+// Semaforo.js
 import React, { useEffect, useState } from "react";
 import SemaforoN from "../assets/Semaforo.svg"; // Importa la imagen del semáforo
 import SemaforoRojo from "../assets/SemaforoRojo.svg"; // Importa la imagen del semáforo rojo
 import SemaforoAmarillo from "../assets/SemaforoAmarillo.svg"; // Importa la imagen del semáforo amarillo
 import SemaforoNaranja from "../assets/SemaforoNaranja.svg"; // Importa la imagen del semáforo naranja
 import { motion } from "framer-motion";
+
 function Semaforo({ alertLevel }) {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
@@ -22,10 +24,13 @@ function Semaforo({ alertLevel }) {
   const getSemaforoImage = () => {
     switch (alertLevel) {
       case "red":
+        console.log("Rojo");
         return SemaforoRojo;
       case "yellow":
+        console.log("Amarillo");
         return SemaforoAmarillo;
       case "orange":
+        console.log("Naranja");
         return SemaforoNaranja;
       default:
         // Por defecto, mostrar el semáforo original

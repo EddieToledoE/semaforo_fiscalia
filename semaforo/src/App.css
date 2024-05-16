@@ -5,15 +5,16 @@
   overflow-y: hidden;
   overflow-x: hidden;
 }
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; 
-  overflow-y: hidden; 
-  height: 100%; 
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100%;
   min-height: 100vh;
 }
-
 
 .clouds-container {
   display: flex;
@@ -31,25 +32,25 @@ html, body, #root {
 }
 
 .Big-Tittle {
-  font-size: 110px;
+  font-size: 89px;
   font-weight: bold;
   color: #333232;
-  text-align: left;
+  text-align: center;
   margin: 0px;
   font-family: cursive;
 }
 
 .Tittle {
-  font-size: 60px;
+  font-size: 40px;
   font-weight: bold;
   color: #333232;
-  text-align: left;
+  text-align: center;
   margin: 0px;
   font-family: cursive;
 }
 .Tittle-container {
-  display: inline;
-  justify-content: left;
+  display: flexbox;
+  justify-content: center;
   align-items: center;
   height: auto;
   padding: 0px;
@@ -57,7 +58,7 @@ html, body, #root {
 }
 .button-container {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   height: auto;
   padding: 20px;
@@ -68,6 +69,7 @@ html, body, #root {
   border: solid 2px #000000;
   color: white;
   padding: 15px 32px;
+  align-items: center;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -115,4 +117,29 @@ html, body, #root {
   right: 100%;
   justify-content: right;
   /* border: solid 1px black; */
+}
+
+.reset-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 10px 20px;
+  width: 200px;
+  height: 100px;
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px solid black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000; /* Para asegurarse de que esté por encima de otros elementos */
+}
+
+.reset-button:hover {
+  background-color: #d32f2f; /* Rojo más oscuro al pasar el mouse */
+}
+
+.back-image {
+  width: 50%;
 }
