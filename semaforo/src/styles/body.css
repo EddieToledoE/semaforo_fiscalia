@@ -18,12 +18,12 @@
 
 .head {
   position: absolute; /* Añadido 'position: absolute;' */
-  top: 9%;
-  left: 47%;
-  width: 60px;
-  height: 40px;
+  top: 6%;
+  left: 46%;
+  width: 80px;
+  height: 60px;
   border-radius: 60%;
-  /* background-color: black; */
+  /* background-color: black;  */
   z-index: 3;
   cursor: pointer;
 }

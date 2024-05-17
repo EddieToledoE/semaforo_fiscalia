@@ -12,7 +12,7 @@ function AgeSelector({ onAgeSelected }) {
     <div className="age-selection">
       <h1 className="Tittle">Rango de edad</h1>
 
-      <div className="button-container">
+      <div className="button-container-edades">
         <button
           className="age-button"
           onClick={() => handleAgeSelection("infantes")}

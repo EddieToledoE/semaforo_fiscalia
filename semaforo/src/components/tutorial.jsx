@@ -1,23 +1,25 @@
 import React, { useEffect } from "react";
 import tutorialGif from "../assets/Tuto.gif";
-import tutorialAudio from "../assets/TutorialAudio.mp4";
+import tutorialAudioInfantes from "../assets/TutorialN.mp4";
+import tutorialAudioAdolescentes from "../assets/TutorialAdolescentes.mp4";
 import "../styles/tutorial.css";
 
-function Tutorial({ onTutorialEnd }) {
+function Tutorial({ onTutorialEnd, selectedAge }) {
   useEffect(() => {
-    const audio = new Audio(tutorialAudio);
+    const audioSrc = selectedAge === "infantes" ? tutorialAudioInfantes : tutorialAudioAdolescentes;
+    const audio = new Audio(audioSrc);
     audio.play();
 
     const timer = setTimeout(() => {
       onTutorialEnd();
-    }, 10000); // 10 seconds duration for the tutorial
+    }, 15000); // 10 seconds duration for the tutorial
 
     return () => {
       clearTimeout(timer);
       audio.pause();
       audio.currentTime = 0;
     };
-  }, [onTutorialEnd]);
+  }, [onTutorialEnd, selectedAge]);
 
   return (
     <div className="tutorial-container">

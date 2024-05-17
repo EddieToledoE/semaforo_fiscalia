@@ -1,16 +1,35 @@
-// Body.js
 import React, { useState, useEffect } from "react";
 import "../styles/body.css";
 import BodyIMG from "../assets/Cuerpo.svg";
 import { motion } from "framer-motion";
+import alertAudioRed from "../assets/Rojo.mp3";
+import alertAudioOrange from "../assets/Naranja.mp3";
+import alertAudioYellow from "../assets/Verde.mp3";
 
 function Body({ selectedAge, onAlert }) {
   const [alertLevel, setAlertLevel] = useState("");
   const [resetAnimation, setResetAnimation] = useState(0); // Estado para forzar el reset de la animación
 
+  useEffect(() => {
+    // Preload audio files
+    const redAudio = new Audio(alertAudioRed);
+    const orangeAudio = new Audio(alertAudioOrange);
+    const yellowAudio = new Audio(alertAudioYellow);
+    
+    // Function to preload audios
+    const preloadAudios = () => {
+      redAudio.load();
+      orangeAudio.load();
+      yellowAudio.load();
+    };
+    
+    preloadAudios();
+  }, []);
+
   const handleAlert = (level) => {
     setAlertLevel(level);
     onAlert(level);
+    playAlertAudio(level);
     setResetAnimation((prev) => prev + 1); // Actualiza el estado para forzar el reset de la animación
   };
 
@@ -34,6 +53,30 @@ function Body({ selectedAge, onAlert }) {
     return age && level
       ? messages[age === "infantes" ? "infantes" : "adolescentes"][level]
       : "";
+  };
+
+  const playAlertAudio = (level) => {
+    let audioSrc;
+    switch (level) {
+      case "red":
+        audioSrc = alertAudioRed;
+        break;
+      case "orange":
+        audioSrc = alertAudioOrange;
+        break;
+      case "yellow":
+        audioSrc = alertAudioYellow;
+        break;
+      default:
+        audioSrc = null;
+    }
+
+    if (audioSrc) {
+      const audio = new Audio(audioSrc);
+      audio.play().catch((error) => {
+        console.log("Audio playback failed: ", error);
+      });
+    }
   };
 
   return (

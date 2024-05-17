@@ -64,6 +64,14 @@ body,
   padding: 20px;
   /* border: solid 1px rgb(14, 226, 24);    */
 }
+.button-container-edades {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding: 20px;
+  /* border: solid 1px rgb(14, 226, 24);     */
+}
 .start-button {
   background-color: #18b61e;
   border: solid 2px #000000;
