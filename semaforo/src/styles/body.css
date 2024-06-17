@@ -10,9 +10,9 @@
 
 .body-img {
   position: absolute; /* Cambiado de 'fixed' a 'absolute' */
-  height: 80%;
-  width: 80%;
-  left: 100px;
+  width: 400px;
+  height: 600px;
+  left: 350px;
   z-index: 2;
 }
 

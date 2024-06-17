@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../styles/body.css";
-import BodyIMG from "../assets/Cuerpo.svg";
+import BodyIMG from "../assets/niña.png";
 import { motion } from "framer-motion";
 import alertAudioRed from "../assets/Rojo.mp3";
 import alertAudioOrange from "../assets/Naranja.mp3";
@@ -8,21 +8,21 @@ import alertAudioYellow from "../assets/Verde.mp3";
 
 function Body({ selectedAge, onAlert }) {
   const [alertLevel, setAlertLevel] = useState("");
-  const [resetAnimation, setResetAnimation] = useState(0); // Estado para forzar el reset de la animación
+  const [resetAnimation, setResetAnimation] = useState(0);
+  const audioRef = useRef(new Audio());
 
   useEffect(() => {
     // Preload audio files
     const redAudio = new Audio(alertAudioRed);
     const orangeAudio = new Audio(alertAudioOrange);
     const yellowAudio = new Audio(alertAudioYellow);
-    
-    // Function to preload audios
+
     const preloadAudios = () => {
       redAudio.load();
       orangeAudio.load();
       yellowAudio.load();
     };
-    
+
     preloadAudios();
   }, []);
 
@@ -30,7 +30,7 @@ function Body({ selectedAge, onAlert }) {
     setAlertLevel(level);
     onAlert(level);
     playAlertAudio(level);
-    setResetAnimation((prev) => prev + 1); // Actualiza el estado para forzar el reset de la animación
+    setResetAnimation((prev) => prev + 1);
   };
 
   const getMessageByAgeAndLevel = (age, level) => {
@@ -72,10 +72,14 @@ function Body({ selectedAge, onAlert }) {
     }
 
     if (audioSrc) {
-      const audio = new Audio(audioSrc);
-      audio.play().catch((error) => {
-        console.log("Audio playback failed: ", error);
-      });
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = audioSrc;
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().catch((error) => {
+          console.log("Audio playback failed: ", error);
+        });
+      }
     }
   };
 
@@ -92,7 +96,7 @@ function Body({ selectedAge, onAlert }) {
       <div className="mano-izq" onClick={() => handleAlert("yellow")} />
       {alertLevel && (
         <motion.div
-          key={resetAnimation} // Forza el reinicio de la animación al cambiar este estado
+          key={resetAnimation}
           className={`alert-message alert-${alertLevel}`}
           initial={{ x: 0, scale: 0 }}
           animate={{ x: 0, scale: [1.1, 1.2] }}
