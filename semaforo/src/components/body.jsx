@@ -5,10 +5,14 @@ import { motion } from "framer-motion";
 import alertAudioRed from "../assets/Rojo.mp3";
 import alertAudioOrange from "../assets/Naranja.mp3";
 import alertAudioYellow from "../assets/Verde.mp3";
+import Logo from "../assets/Logo.png";
+import Swal from "sweetalert2";
+import denunciaImage from "../assets/no 1.png"; // Añade la imagen de concienciación
 
 function Body({ selectedAge, onAlert }) {
   const [alertLevel, setAlertLevel] = useState("");
   const [resetAnimation, setResetAnimation] = useState(0);
+  const [zone, setZone] = useState("");
   const audioRef = useRef(new Audio());
 
   useEffect(() => {
@@ -26,32 +30,53 @@ function Body({ selectedAge, onAlert }) {
     preloadAudios();
   }, []);
 
-  const handleAlert = (level) => {
+  const handleAlert = (level, zone) => {
     setAlertLevel(level);
+    setZone(zone);
     onAlert(level);
     playAlertAudio(level);
     setResetAnimation((prev) => prev + 1);
   };
 
-  const getMessageByAgeAndLevel = (age, level) => {
+  const getMessageByAgeLevelAndZone = (age, level, zone) => {
     const messages = {
       adolescentes: {
-        red: "Tus partes privadas, son solo tuyas y nadie tiene derecho a tocarlas sin tu consentimiento. Si alguien cruza esta línea o te hace sentir en peligro, busca ayuda de inmediato y habla con alguien de confianza sobre lo que sucedió.",
-        orange:
-          "Si alguien intenta tocarte en lugares que te hacen sentir incómodo o vulnerado, es crucial establecer límites claros. Di 'No' firmemente y busca apoyo en un adulto de confianza o en recursos de ayuda.",
-        yellow:
-          "Es importante respetar tu cuerpo y tu privacidad. No permitas que nadie toque las partes de tu cuerpo que están descubiertas por la ropa, sin tu permiso.",
+        red: {
+          head: "La cabeza es una zona privada y delicada. Si alguien intenta tocarla sin tu permiso, busca ayuda inmediatamente.",
+          pecho: "El pecho es una zona muy sensible y privada. Nadie debe tocarte allí sin tu consentimiento. Habla con alguien de confianza.",
+          bajos: "Tus partes íntimas son solo tuyas. Si alguien intenta tocarte, dile 'No' y busca ayuda de inmediato.",
+        },
+        orange: {
+          cuello: "El cuello es una zona vulnerable. Si te sientes incómodo con alguien tocándote allí, dilo claramente y busca apoyo.",
+          panza: "La panza es una zona personal. Si alguien intenta tocarte sin tu permiso, di 'No' y aléjate.",
+          pierna: "Las piernas son zonas que deben ser respetadas. Si alguien te hace sentir incómodo, di 'No' y busca ayuda.",
+          pie: "Los pies también necesitan ser respetados. No permitas que alguien te toque si te hace sentir incómodo.",
+        },
+        yellow: {
+          brazo: "Los brazos pueden ser tocados con tu permiso. Si te sientes incómodo, di 'No' claramente.",
+          mano: "Las manos son zonas de contacto común, pero siempre debes dar tu permiso. Si te sientes mal, aléjate.",
+        },
       },
       infantes: {
-        red: "Nunca dejes que nadie toque tus partes privadas, sin tu permiso. Si alguien trata de hacerlo o te hace sentir mal, busca ayuda de un adulto de inmediato.",
-        orange:
-          "Si alguien intenta tocar partes de tu cuerpo que están cubiertas, dile 'No' y cuéntale a un adulto de confianza si te sientes incómodo.",
-        yellow:
-          "No está bien que alguien toque las partes descubiertas por tu ropa. Es importante mantenerlas seguras y privadas.",
+        red: {
+          head: "Nadie debe tocar tu cabeza sin tu permiso. Si alguien lo intenta, busca ayuda de un adulto.",
+          pecho: "El pecho es una parte privada. No dejes que nadie lo toque sin tu permiso.",
+          bajos: "Tus partes privadas son solo tuyas. Si alguien intenta tocarlas, busca ayuda de inmediato.",
+        },
+        orange: {
+          panza: "La panza es tuya y nadie debe tocarla sin tu permiso. Busca ayuda si te sientes incómodo.",
+          pierna: "Las piernas son personales. Di 'No' si alguien intenta tocarlas sin tu consentimiento.",
+          pie: "Los pies también son privados. No dejes que alguien los toque si te sientes incómodo.",
+        },
+        yellow: {
+          cuello: "El cuello es una parte sensible. Dile 'No' a cualquiera que intente tocarlo sin tu permiso.",
+          brazo: "Tus brazos son tuyos. Di 'No' si alguien intenta tocarlos sin tu permiso.",
+          mano: "Las manos son para saludar, pero siempre con tu permiso. Di 'No' si te sientes incómodo.",
+        },
       },
     };
-    return age && level
-      ? messages[age === "infantes" ? "infantes" : "adolescentes"][level]
+    return age && level && zone
+      ? messages[age === "infantes" ? "infantes" : "adolescentes"][level][zone]
       : "";
   };
 
@@ -83,22 +108,34 @@ function Body({ selectedAge, onAlert }) {
     }
   };
 
+  const showDenunciaInfo = () => {
+    Swal.fire({
+      title: 'Información de Denuncia',
+      text: 'Procuraduría de Protección de Niñas, Niños y Adolescentes del DIF Libramiento Norte Oriente Salomón González Blanco S/N Esq. Paso Limón, PatriaNueva C.P. 29000 Tuxtla Gutiérrez, Chiapas. Conmutador: (961) 61 7 00-20 Ext. 55022-55025',
+      imageUrl: Logo,
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'Denuncia',
+      confirmButtonText: 'Entendido'
+    });
+  };
+
   return (
     <div className="body-container">
       <img className="body-img" src={BodyIMG} alt="" />
-      <div className="head" onClick={() => handleAlert("orange")} />
-      <div className="cuello" onClick={() => handleAlert("yellow")} />
-      <div className="pecho" onClick={() => handleAlert("red")} />
-      <div className="panza" onClick={() => handleAlert("orange")} />
-      <div className="bajos" onClick={() => handleAlert("red")} />
-      <div className="brazo-der" onClick={() => handleAlert("yellow")} />
-      <div className="brazo-izq" onClick={() => handleAlert("yellow")} />
-      <div className="pierna-izq" onClick={() => handleAlert("orange")} />
-      <div className="pierna-der" onClick={() => handleAlert("orange")} />
-      <div className="mano-der" onClick={() => handleAlert("yellow")} />
-      <div className="mano-izq" onClick={() => handleAlert("yellow")} />
-      <div className="pie-izq" onClick={() => handleAlert("orange")} />
-      <div className="pie-der" onClick={() => handleAlert("orange")} />
+      <div className="head" onClick={() => handleAlert("red", "head")} />
+      <div className="cuello" onClick={() => handleAlert("yellow", "cuello")} />
+      <div className="pecho" onClick={() => handleAlert("red", "pecho")} />
+      <div className="panza" onClick={() => handleAlert("orange", "panza")} />
+      <div className="bajos" onClick={() => handleAlert("red", "bajos")} />
+      <div className="brazo-der" onClick={() => handleAlert("yellow", "brazo")} />
+      <div className="brazo-izq" onClick={() => handleAlert("yellow", "brazo")} />
+      <div className="pierna-izq" onClick={() => handleAlert("orange", "pierna")} />
+      <div className="pierna-der" onClick={() => handleAlert("orange", "pierna")} />
+      <div className="mano-der" onClick={() => handleAlert("yellow", "mano")} />
+      <div className="mano-izq" onClick={() => handleAlert("yellow", "mano")} />
+      <div className="pie-izq" onClick={() => handleAlert("orange", "pie")} />
+      <div className="pie-der" onClick={() => handleAlert("orange", "pie")} />
       {alertLevel && (
         <motion.div
           key={resetAnimation}
@@ -112,7 +149,12 @@ function Body({ selectedAge, onAlert }) {
             repeatDelay: 1,
           }}
         >
-          {getMessageByAgeAndLevel(selectedAge, alertLevel)}
+          {getMessageByAgeLevelAndZone(selectedAge, alertLevel, zone)}
+          <div className="denuncia-container" onClick={showDenunciaInfo}>
+           
+            <img src={denunciaImage} alt="Denuncia" className="denuncia-img" />
+            <p className="denuncia-text">Toca abajo para obtener ayuda y denunciar</p>
+          </div>
         </motion.div>
       )}
     </div>
