@@ -89,11 +89,16 @@ function Body({ selectedAge, onAlert }) {
       <div className="head" onClick={() => handleAlert("orange")} />
       <div className="cuello" onClick={() => handleAlert("yellow")} />
       <div className="pecho" onClick={() => handleAlert("red")} />
+      <div className="panza" onClick={() => handleAlert("orange")} />
       <div className="bajos" onClick={() => handleAlert("red")} />
+      <div className="brazo-der" onClick={() => handleAlert("yellow")} />
+      <div className="brazo-izq" onClick={() => handleAlert("yellow")} />
       <div className="pierna-izq" onClick={() => handleAlert("orange")} />
       <div className="pierna-der" onClick={() => handleAlert("orange")} />
       <div className="mano-der" onClick={() => handleAlert("yellow")} />
       <div className="mano-izq" onClick={() => handleAlert("yellow")} />
+      <div className="pie-izq" onClick={() => handleAlert("orange")} />
+      <div className="pie-der" onClick={() => handleAlert("orange")} />
       {alertLevel && (
         <motion.div
           key={resetAnimation}
