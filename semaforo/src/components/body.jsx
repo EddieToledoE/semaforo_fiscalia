@@ -42,36 +42,36 @@ function Body({ selectedAge, onAlert }) {
     const messages = {
       adolescentes: {
         red: {
-          head: "La cabeza es una zona privada y delicada. Si alguien intenta tocarla sin tu permiso, busca ayuda inmediatamente.",
+          head: "La cara es una zona privada y delicada. Si alguien intenta tocarte sin tu permiso, puede estar intentando cruzar límites personales.",
           pecho: "El pecho es una zona muy sensible y privada. Nadie debe tocarte allí sin tu consentimiento. Habla con alguien de confianza.",
-          bajos: "Tus partes íntimas son solo tuyas. Si alguien intenta tocarte, dile 'No' y busca ayuda de inmediato.",
+          bajos: "Tus partes íntimas son exclusivamente tuyas. Cualquier intento de tocarlas sin tu permiso es inaceptable y probablemente malintencionado. Dile 'No' y busca ayuda de inmediato.",
         },
         orange: {
-          cuello: "El cuello es una zona vulnerable. Si te sientes incómodo con alguien tocándote allí, dilo claramente y busca apoyo.",
-          panza: "La panza es una zona personal. Si alguien intenta tocarte sin tu permiso, di 'No' y aléjate.",
-          pierna: "Las piernas son zonas que deben ser respetadas. Si alguien te hace sentir incómodo, di 'No' y busca ayuda.",
-          pie: "Los pies también necesitan ser respetados. No permitas que alguien te toque si te hace sentir incómodo.",
+          cuello: "El cuello es una zona vulnerable. Si te sientes incómodo con alguien tocándote allí, podrían estar probando tus límites. Dilo claramente y busca apoyo.",
+          panza: "La panza es una zona personal. Si alguien intenta tocarte sin tu permiso, podría tener otras intenciones. Di 'No' y aléjate.",
+          pierna: "Las piernas son zonas que deben ser respetadas. Si alguien te hace sentir incómodo, podría estar buscando un contacto más íntimo.",
+          pie: "Los pies también necesitan ser respetados. Toques en esta zona que parecen inocentes podrían tener otras intenciones. No permitas que alguien te toque si te hace sentir incómodo.",
         },
         yellow: {
-          brazo: "Los brazos pueden ser tocados con tu permiso. Si te sientes incómodo, di 'No' claramente.",
+          brazo:  "Los brazos pueden ser tocados con tu permiso. Si te sientes incómodo, podrían estar tratando de ganar tu confianza para ir más allá. Di 'No' claramente.",
           mano: "Las manos son zonas de contacto común, pero siempre debes dar tu permiso. Si te sientes mal, aléjate.",
         },
       },
       infantes: {
         red: {
-          head: "Nadie debe tocar tu cabeza sin tu permiso. Si alguien lo intenta, busca ayuda de un adulto.",
-          pecho: "El pecho es una parte privada. No dejes que nadie lo toque sin tu permiso.",
+          head: "Nadie debe tocar tu cara sin tu permiso. Si alguien lo intenta, podría estar queriendo sobrepasar tus límites personales. Busca ayuda de un adulto.",
+          pecho: "El pecho es una parte privada. No dejes que nadie lo toque sin tu permiso, Nadie tiene porque tocarte ahi",
           bajos: "Tus partes privadas son solo tuyas. Si alguien intenta tocarlas, busca ayuda de inmediato.",
         },
         orange: {
-          panza: "La panza es tuya y nadie debe tocarla sin tu permiso. Busca ayuda si te sientes incómodo.",
-          pierna: "Las piernas son personales. Di 'No' si alguien intenta tocarlas sin tu consentimiento.",
-          pie: "Los pies también son privados. No dejes que alguien los toque si te sientes incómodo.",
+          panza: "Tu panza es tuya y nadie debe tocarla sin tu permiso. Puede parecer inocente pero no debes permitir que te toquen ahi.",
+          pierna: "Las piernas deben ser respetadas. Si alguien te hace sentir incómodo, seguro tiene malas intenciones.",
+          pie: "Los pies también son privados. Si alguien los toca sin tu permiso, podrían tener otras intenciones. No dejes que alguien los toque si te sientes incómodo.",
         },
         yellow: {
-          cuello: "El cuello es una parte sensible. Dile 'No' a cualquiera que intente tocarlo sin tu permiso.",
-          brazo: "Tus brazos son tuyos. Di 'No' si alguien intenta tocarlos sin tu permiso.",
-          mano: "Las manos son para saludar, pero siempre con tu permiso. Di 'No' si te sientes incómodo.",
+          cuello: "El cuello es una parte muy fragil y peligrosa. No permitas que nadie se acerque a el.",
+          brazo:  "Tus brazos son tuyos y nadie debe tocarlos sin tu permiso. Si te sientes incómodo o te causan dolor es importante decir 'No'.",
+          mano:  "Aunque es común dar la mano, siempre debes sentirte cómodo. Si alguien te toca de una manera que no te gusta, diles que no.",
         },
       },
     };
@@ -110,7 +110,7 @@ function Body({ selectedAge, onAlert }) {
 
   const showDenunciaInfo = () => {
     Swal.fire({
-      title: 'Información de Denuncia',
+      title: 'Donde denunciar',
       text: 'Procuraduría de Protección de Niñas, Niños y Adolescentes del DIF Libramiento Norte Oriente Salomón González Blanco S/N Esq. Paso Limón, PatriaNueva C.P. 29000 Tuxtla Gutiérrez, Chiapas. Conmutador: (961) 61 7 00-20 Ext. 55022-55025',
       imageUrl: Logo,
       imageWidth: 400,
