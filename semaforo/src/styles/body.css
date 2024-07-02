@@ -18,7 +18,7 @@
 
 .head {
   position: absolute; /* Añadido 'position: absolute;' */
-  top: 10%;
+  top: 09%;
   left: 40%;
   width: 280px;
   height: 160px;
@@ -30,7 +30,7 @@
 
 .cuello {
   position: absolute; /* Añadido 'position: absolute;' */
-  top: 240px;
+  top: 225px;
   left: 520px;
   width: 60px;
   height: 30px;
@@ -124,7 +124,7 @@
   text-align: center;
   justify-content: center;
   color: black;
-  top: 150px;
+  top: 220px;
   left: 10px;
   width: 380px;
   height: 10px;
@@ -150,7 +150,18 @@
   z-index: 1;
   cursor: pointer;
 }
-
+.toggle-image-button{
+  position: absolute; /* Añadido 'position: absolute;' */
+  top: 10px;
+  left: 100px;
+  z-index: 3;
+  cursor: pointer;
+  border-radius: 200px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+  border-color: transparent;
+}
 .brazo-izq {
   position: absolute; /* Añadido 'position: absolute;' */
   top: 305px;

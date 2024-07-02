@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/body.css";
-import BodyIMG from "../assets/niña.png";
+import BodyGirlIMG from "../assets/niña.png";
+import BodyBoyIMG from "../assets/niño.png"; // Añade la imagen del niño
 import { motion } from "framer-motion";
 import alertAudioRed from "../assets/Rojo.mp3";
 import alertAudioOrange from "../assets/Naranja.mp3";
@@ -13,6 +14,7 @@ function Body({ selectedAge, onAlert }) {
   const [alertLevel, setAlertLevel] = useState("");
   const [resetAnimation, setResetAnimation] = useState(0);
   const [zone, setZone] = useState("");
+  const [isGirlImage, setIsGirlImage] = useState(true); // Estado para controlar la imagen mostrada
   const audioRef = useRef(new Audio());
 
   useEffect(() => {
@@ -47,12 +49,12 @@ function Body({ selectedAge, onAlert }) {
           bajos: "Tus partes íntimas son exclusivamente tuyas. Cualquier intento de tocarlas sin tu permiso es inaceptable y probablemente malintencionado. Dile 'No' y busca ayuda de inmediato.",
         },
         orange: {
-          cuello: "El cuello es una zona vulnerable. Si te sientes incómodo con alguien tocándote allí, podrían estar probando tus límites. Dilo claramente y busca apoyo.",
           panza: "La panza es una zona personal. Si alguien intenta tocarte sin tu permiso, podría tener otras intenciones. Di 'No' y aléjate.",
           pierna: "Las piernas son zonas que deben ser respetadas. Si alguien te hace sentir incómodo, podría estar buscando un contacto más íntimo.",
           pie: "Los pies también necesitan ser respetados. Toques en esta zona que parecen inocentes podrían tener otras intenciones. No permitas que alguien te toque si te hace sentir incómodo.",
         },
         yellow: {
+          cuello: "El cuello es una zona vulnerable. Si te sientes incómodo con alguien tocándote allí, podrían estar probando tus límites. Dilo claramente y busca apoyo.",
           brazo:  "Los brazos pueden ser tocados con tu permiso. Si te sientes incómodo, podrían estar tratando de ganar tu confianza para ir más allá. Di 'No' claramente.",
           mano: "Las manos son zonas de contacto común, pero siempre debes dar tu permiso. Si te sientes mal, aléjate.",
         },
@@ -120,9 +122,17 @@ function Body({ selectedAge, onAlert }) {
     });
   };
 
+  const handleImageToggle = () => {
+    setIsGirlImage(!isGirlImage);
+  };
+
   return (
     <div className="body-container">
-      <img className="body-img" src={BodyIMG} alt="" />
+      <img
+        className="body-img"
+        src={isGirlImage ? BodyGirlIMG : BodyBoyIMG}
+        alt={isGirlImage ? "Niña" : "Niño"}
+      />
       <div className="head" onClick={() => handleAlert("red", "head")} />
       <div className="cuello" onClick={() => handleAlert("yellow", "cuello")} />
       <div className="pecho" onClick={() => handleAlert("red", "pecho")} />
@@ -157,6 +167,13 @@ function Body({ selectedAge, onAlert }) {
           </div>
         </motion.div>
       )}
+      <button
+        className="toggle-image-button"
+        style={{ backgroundColor: isGirlImage ? "blue" : "pink" }}
+        onClick={handleImageToggle}
+      >
+        {isGirlImage ? "Mostrar Niño" : "Mostrar Niña"}
+      </button>
     </div>
   );
 }

@@ -11,11 +11,15 @@ import Body from "./components/body";
 import Tutorial from "./components/tutorial"; // Importa el componente Tutorial
 import Back from "./assets/back.png";
 import backgroundAudio from "./assets/Inicio.mp3"; // Importa tu archivo de audio
+import clickSound from "./assets/click.mp3"; // Importa el sonido de click
 
 function App() {
   const [selectedAge, setSelectedAge] = useState(""); // Estado para almacenar la edad seleccionada
   const [alertLevel, setAlertLevel] = useState(""); // Estado para almacenar el nivel de alerta
   const [showTutorial, setShowTutorial] = useState(false); // Estado para manejar el tutorial
+  const [audio] = useState(new Audio(backgroundAudio)); // Estado para el audio de fondo
+  const [audioStarted, setAudioStarted] = useState(false); // Estado para controlar si el audio ha comenzado
+  const [tutorialEnded, setTutorialEnded] = useState(false); // Estado para controlar si el tutorial ha terminado
 
   const handleAgeSelection = (age) => {
     setSelectedAge(age);
@@ -23,7 +27,17 @@ function App() {
   };
 
   const handleStart = () => {
+    const clickAudio = new Audio(clickSound);
+    clickAudio.play(); // Reproducir el sonido de clic
+    if (!tutorialEnded) {
+      audio.play(); // Reproducir el audio de fondo si el tutorial no ha terminado
+    }
     setSelectedAge("selecting"); // Usamos un estado intermedio para saber que estamos en selección
+  };
+
+  const handleInitialStart = () => {
+    audio.play(); // Reproducir el audio de fondo
+    setAudioStarted(true); // Indicar que el audio ha comenzado
   };
 
   const handleAlert = (level) => {
@@ -36,24 +50,28 @@ function App() {
 
   const handleTutorialEnd = () => {
     setShowTutorial(false); // Oculta el tutorial después de que termine
+    setTutorialEnded(true); // Indicar que el tutorial ha terminado
+    audio.pause(); // Detener el audio de fondo
+    audio.currentTime = 0; // Reiniciar el audio
   };
 
   useEffect(() => {
-    const audio = new Audio(backgroundAudio);
     audio.loop = true; // Hacer que el audio se repita en bucle
-
-    if (!showTutorial) {
-      audio.play(); // Reproducir el audio si no se ha seleccionado la edad
-    } else {
-      audio.pause(); // Pausar el audio si se ha seleccionado la edad
-      audio.currentTime = 0; // Reiniciar el audio
-    }
 
     return () => {
       audio.pause(); // Asegurarse de que el audio se pause si el componente se desmonta
       audio.currentTime = 0; // Reiniciar el audio
     };
-  }, [selectedAge]);
+  }, [audio]);
+
+  useEffect(() => {
+    if (showTutorial) {
+      audio.pause(); // Pausar el audio si se ha seleccionado la edad
+      audio.currentTime = 0; // Reiniciar el audio
+    } else if (audioStarted && !tutorialEnded) {
+      audio.play().catch((e) => console.log(e)); // Intentar reproducir el audio si no se ha seleccionado la edad y ha comenzado el audio
+    }
+  }, [showTutorial, audio, audioStarted, tutorialEnded]);
 
   return (
     <>
@@ -67,7 +85,25 @@ function App() {
               <img className="back-image" src={Back} alt="Regresar al inicio" />
             </button>
           )}
-        {!selectedAge && ( // Muestra el título y el botón de inicio si no se ha seleccionado ninguna edad
+        {!audioStarted && ( // Muestra el botón de inicio inicial para comenzar el audio
+          <>
+            <div>
+              <Tittle />
+              <div className="button-container">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="start-button"
+                  onClick={handleInitialStart}
+                >
+                  ¿Listos?
+                </motion.button>
+              </div>
+              <img className="logo" src={Logo} alt="Logo" />
+            </div>
+          </>
+        )}
+        {audioStarted && !selectedAge && ( // Muestra el título y el botón de inicio si no se ha seleccionado ninguna edad
           <>
             <div>
               <Tittle />
@@ -78,7 +114,7 @@ function App() {
                   className="start-button"
                   onClick={handleStart}
                 >
-                  Iniciar
+                  ¡Vamos!
                 </motion.button>
               </div>
               <img className="logo" src={Logo} alt="Logo" />

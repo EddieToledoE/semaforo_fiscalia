@@ -1,39 +1,51 @@
-/* Styles for age selection buttons */
-.age-button {
-  display: flex;
-  padding: 10px 20px;
-  font-size: 32px;
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-  background-color: yellow;
-}
-
-.age-button:hover {
-  background-color: #e0e0e0;
-}
-
-.age-button.active {
-  background-color: #007bff;
-  color: #fff;
-}
-
 /* Styles for age selection interface */
 .age-selection {
-  display: flexs;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   margin: 20px 0;
 }
 
-.age-selection-label {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
+.Tittle {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-.age-selection-buttons {
-  margin-top: 10px;
+.image-container-edades {
+  position: absolute;
+  left: 180px;
+  top:250px;
+  display: flex;
+  gap: 1px;
+}
+
+.age-image-container {
+  position: relative;
+  text-align: center;
+}
+
+.age-image-infantes,
+.age-image-adolescentes {
+  width: 300px; /* Ajusta el tamaño de las imágenes según sea necesario */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.age-label {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.age-image-infantes:hover,
+.age-image-adolescentes:hover {
+  transform: scale(1.1); /* Efecto de zoom al pasar el cursor sobre la imagen */
 }

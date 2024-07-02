@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import tutorialGif from "../assets/Tuto.gif";
 import tutorial from "../assets/Tutorial.mp3";
+import clickSound from "../assets/click.mp3"; // Importa el sonido de clic
 import "../styles/tutorial.css";
 import Anita from '../assets/niña.png'
 import No from "../assets/no 1.png"; 
@@ -9,6 +10,7 @@ import Unicef from '../assets/unicef.png'
 import Semaforo from '../assets/SemaforoNaranja.svg'
 import Semaforo2 from '../assets/SemaforoAmarillo.svg'
 import Denuncia from '../assets/Logo.png'
+
 function Tutorial({ onTutorialEnd, selectedAge }) {
   const [showPartes, setShowPartes] = useState(false); 
   const [showOk, setShowOk] = useState(false); 
@@ -25,6 +27,11 @@ function Tutorial({ onTutorialEnd, selectedAge }) {
     const audioSrc = selectedAge === "infantes" ? tutorial : tutorial;
     const audio = new Audio(audioSrc);
     audio.play();
+
+    const playClickSound = () => {
+      const clickAudio = new Audio(clickSound);
+      clickAudio.play();
+    };
 
     const imageTimer = setTimeout(() => {
       setShowPartes(true); // Mostrar la imagen en el segundo 30
@@ -69,6 +76,7 @@ function Tutorial({ onTutorialEnd, selectedAge }) {
     }, 101000); // 25 seconds (20s + 5s)
 
     const SemaforoTimer = setTimeout(() => {
+      playClickSound(); // Reproducir el sonido de clic
       setShowSemaforo(true); // Mostrar la imagen en el segundo 30
     }, 100000); // 20 seconds
     const hideSemaforoTimer = setTimeout(() => {
@@ -83,6 +91,7 @@ function Tutorial({ onTutorialEnd, selectedAge }) {
     }, 107000); // 25 seconds (20s + 5s)
 
     const Semaforo2Timer = setTimeout(() => {
+      playClickSound(); // Reproducir el sonido de clic
       setShowSemaforo2(true); // Mostrar la imagen en el segundo 30
     }, 107000); // 20 seconds
     const hideSemaforo2Timer = setTimeout(() => {
@@ -110,6 +119,7 @@ function Tutorial({ onTutorialEnd, selectedAge }) {
     return () => {
       clearTimeout(DenunciaTimer);
       clearTimeout(hideDenunciaTimer);
+      clearTimeout(No2Timer);
       clearTimeout(hideNo2Timer);
       clearTimeout(Semaforo2Timer);
       clearTimeout(hideSemaforo2Timer);
