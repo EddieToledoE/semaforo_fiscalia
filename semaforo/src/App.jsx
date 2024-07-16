@@ -6,6 +6,7 @@ import AgeSelector from "./components/ageSelector";
 import Tittle from "./components/tittle";
 import { motion } from "framer-motion";
 import Logo from "./assets/Logo.png";
+import Up from "./assets/UpLogo.png";	
 import "./App.css";
 import Body from "./components/body";
 import Tutorial from "./components/tutorial"; // Importa el componente Tutorial
@@ -99,7 +100,8 @@ function App() {
                   ¿Listos?
                 </motion.button>
               </div>
-              <img className="logo" src={Logo} alt="Logo" />
+              <img className="logo" src={Logo} alt="Logo" />            
+              <img className="up-logo" src={Up} alt="Up Logo" />
             </div>
           </>
         )}
@@ -118,6 +120,7 @@ function App() {
                 </motion.button>
               </div>
               <img className="logo" src={Logo} alt="Logo" />
+              <img className="up-logo" src={Up} alt="Up Logo" />
             </div>
           </>
         )}

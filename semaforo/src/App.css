@@ -151,3 +151,17 @@ body,
 .back-image {
   width: 50%;
 }
+
+.logo{
+  position: relative;
+  top: 0;
+}
+
+
+.up-logo{
+  position: relative;
+  top: -150px;
+  width: 20%;
+  right: 240px;
+  height: 20%;
+}
