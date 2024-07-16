@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from "react";
 import tutorialGif from "../assets/Tuto.gif";
 import tutorial from "../assets/Tutorial.mp3";
-import clickSound from "../assets/click.mp3"; // Importa el sonido de clic
+import clickSound from "../assets/click.mp3";
 import "../styles/tutorial.css";
-import Anita from '../assets/niña.png'
-import No from "../assets/no 1.png"; 
-import Incomodo from '../assets/Incomodo.gif'
-import Unicef from '../assets/unicef.png'
-import Semaforo from '../assets/SemaforoNaranja.svg'
-import Semaforo2 from '../assets/SemaforoAmarillo.svg'
-import Denuncia from '../assets/Logo.png'
+import Anita from "../assets/niña.png";
+import No from "../assets/no 1.png";
+import Incomodo from "../assets/niña triste.png";
+import Unicef from "../assets/unicef.png";
+import Semaforo from "../assets/SemaforoNaranja.svg";
+import Semaforo2 from "../assets/SemaforoAmarillo.svg";
+import Denuncia from "../assets/Logo.png";
 
 function Tutorial({ onTutorialEnd, selectedAge }) {
-  const [showPartes, setShowPartes] = useState(false); 
-  const [showOk, setShowOk] = useState(false); 
-  const [showNo, setShowNo] = useState(false); 
-  const [showIncomodo, setShowIncomodo] = useState(false); 
-  const [showUnicef, setShowUnicef] = useState(false); 
-  const [showTutorial, setShowTutorial] = useState(false); 
-  const [showSemaforo, setShowSemaforo] = useState(false); 
+  const [showPartes, setShowPartes] = useState(false);
+  const [showOk, setShowOk] = useState(false);
+  const [showNo, setShowNo] = useState(false);
+  const [showIncomodo, setShowIncomodo] = useState(false);
+  const [showUnicef, setShowUnicef] = useState(false);
+  const [showTutorial, setShowTutorial] = useState(false);
+  const [showSemaforo, setShowSemaforo] = useState(false);
   const [showSemaforo2, setShowSemaforo2] = useState(false);
   const [showTutorial2, setShowTutorial2] = useState(false);
-  const [showDenuncia, setShowDenuncia] = useState(false); 
- 
+  const [showDenuncia, setShowDenuncia] = useState(false);
+
   useEffect(() => {
     const audioSrc = selectedAge === "infantes" ? tutorial : tutorial;
     const audio = new Audio(audioSrc);
@@ -111,10 +111,10 @@ function Tutorial({ onTutorialEnd, selectedAge }) {
     const hideDenunciaTimer = setTimeout(() => {
       //setShowDenuncia(false); // Ocultar la imagen después de 5 segundos
     }, 161000); // 25 seconds (20s + 5s)
-    
+
     const tutorialEndTimer = setTimeout(() => {
       onTutorialEnd();
-    }, 161000); // 2 minutes and 41 seconds duration for the tutorial Borrar 
+    }, 161000); // 2 minutes and 41 seconds duration for the tutorial Borrar
 
     return () => {
       clearTimeout(DenunciaTimer);
@@ -147,18 +147,14 @@ function Tutorial({ onTutorialEnd, selectedAge }) {
 
   return (
     <div className="tutorial-container">
-       <img className="body-img" src={Anita} alt="Anita" />
+      <img className="body-img" src={Anita} alt="Anita" />
       {showPartes && (
-       <img className="tutorial-gif" src={tutorialGif} alt="Mano" />
-      )}
-      {showOk && (
         <img className="tutorial-gif" src={tutorialGif} alt="Mano" />
       )}
-      {showNo && (
-        <img className="no-img" src={No} alt="Letrero NO" />
-      )}
+      {showOk && <img className="tutorial-gif" src={tutorialGif} alt="Mano" />}
+      {showNo && <img className="no-img" src={No} alt="Letrero NO" />}
       {showIncomodo && (
-        <img className="incomodo-img" src={Incomodo} alt="Incomodo" />
+        <img className="body-img" src={Incomodo} alt="Incomodo" />
       )}
       {showUnicef && (
         <img className="unicef-img" src={Unicef} alt="Unicef Logo" />
@@ -167,17 +163,28 @@ function Tutorial({ onTutorialEnd, selectedAge }) {
         <img className="tutorial-gif-semaforo" src={tutorialGif} alt="Mano" />
       )}
       {showSemaforo && (
-        <img className="tutorial-semaforo" src={Semaforo} alt="Semaforo Naranja" />
+        <img
+          className="tutorial-semaforo"
+          src={Semaforo}
+          alt="Semaforo Naranja"
+        />
       )}
       {showTutorial2 && (
         <img className="tutorial-gif-semaforo2" src={tutorialGif} alt="Mano" />
       )}
       {showSemaforo2 && (
-        <img className="tutorial-semaforo" src={Semaforo2} alt="Semaforo Amarillo" />
+        <img
+          className="tutorial-semaforo"
+          src={Semaforo2}
+          alt="Semaforo Amarillo"
+        />
       )}
       {showDenuncia && (
         <img className="tutorial-denuncia" src={Denuncia} alt="Mano" />
       )}
+      <button className="skip-button" onClick={onTutorialEnd}>
+        Saltar Tutorial
+      </button>
     </div>
   );
 }

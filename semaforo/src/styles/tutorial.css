@@ -20,7 +20,7 @@
   top: 350px;
 }
 
-.tutorial-denuncia{
+.tutorial-denuncia {
   background-color: rgb(255, 255, 255);
   position: absolute; /* Añadido 'position: absolute;' */
   top: 250px;
@@ -45,11 +45,10 @@
   top: 390px;
 }
 
-.tutorial-semaforo{
+.tutorial-semaforo {
   position: absolute;
   right: 0px;
 }
-
 
 .body-img {
   position: absolute; /* Cambiado de 'fixed' a 'absolute' */
@@ -69,7 +68,7 @@
   z-index: 3;
 }
 
-.incomodo-img{
+.incomodo-img {
   position: absolute; /* Añadido 'position: absolute;' */
   top: 120px;
   left: 420px;
@@ -78,11 +77,28 @@
   height: 250px;
   z-index: 3;
 }
-.unicef-img{
+.unicef-img {
   position: absolute; /* Añadido 'position: absolute;' */
   top: 20px;
   left: 100px;
   width: 250px;
   height: 250px;
   z-index: 3;
+}
+.skip-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 1000;
+}
+
+.skip-button:hover {
+  background-color: #ff4b4b;
 }
