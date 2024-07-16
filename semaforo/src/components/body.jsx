@@ -6,10 +6,11 @@ import { motion } from "framer-motion";
 import alertAudioRed from "../assets/Rojo.mp3";
 import alertAudioOrange from "../assets/Naranja.mp3";
 import alertAudioYellow from "../assets/Verde.mp3";
-import Logo from "../assets/Logo.png";
+import Logo from "../assets/LogoPoder.svg";
 import Swal from "sweetalert2";
 import denunciaImage from "../assets/no 1.png"; // Añade la imagen de concienciación
-
+import Fiscalia from "../assets/Logo.png";
+import Up from "../assets/UpLogo.png";
 function Body({ selectedAge, onAlert }) {
   const [alertLevel, setAlertLevel] = useState("");
   const [resetAnimation, setResetAnimation] = useState(0);
@@ -112,16 +113,23 @@ function Body({ selectedAge, onAlert }) {
 
   const showDenunciaInfo = () => {
     Swal.fire({
-      title: 'Donde denunciar',
-      text: 'Procuraduría de Protección de Niñas, Niños y Adolescentes del DIF Libramiento Norte Oriente Salomón González Blanco S/N Esq. Paso Limón, PatriaNueva C.P. 29000 Tuxtla Gutiérrez, Chiapas. Conmutador: (961) 61 7 00-20 Ext. 55022-55025',
+      title: '¿Dónde denunciar?',
+      html: `
+        <p>Procuraduría de Protección de Niñas, Niños y Adolescentes del DIF  Tel: (961) 61 7 00-20 Ext. 55022 ó 55025</p>
+      `,
       imageUrl: Logo,
       imageWidth: 400,
       imageHeight: 200,
       imageAlt: 'Denuncia',
-      confirmButtonText: 'Entendido'
+      confirmButtonText: 'Entendido',
+      footer: `
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <img src="${Fiscalia}" alt="Denuncia" style="width: 100px; height: auto;"/>
+          <img src="${Up}" alt="Denuncia" style="width: 100px; height: auto;"/>
+        </div>
+      `
     });
   };
-
   const handleImageToggle = () => {
     setIsGirlImage(!isGirlImage);
   };
@@ -169,7 +177,9 @@ function Body({ selectedAge, onAlert }) {
       )}
       <button
         className="toggle-image-button"
-        style={{ backgroundColor: isGirlImage ? "blue" : "pink" }}
+        style={{ 
+          color: isGirlImage ? "white" : "black",
+          backgroundColor: isGirlImage ? "#255bbd" : "pink" }}
         onClick={handleImageToggle}
       >
         {isGirlImage ? "Mostrar Niño" : "Mostrar Niña"}
