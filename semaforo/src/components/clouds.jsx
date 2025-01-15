@@ -17,6 +17,14 @@ function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Mapa de imágenes
+  const cloudImages = {
+    1: Nube1,
+    2: Nube2,
+    3: Nube3,
+    4: Nube4,
+  };
+
   // Ajustes individuales para cada nube
   const cloudSettings = [
     { id: 1, yOffset: 0, xOffset: screenWidth },
@@ -40,7 +48,11 @@ function App() {
           }}
           className={`cloud${cloud.id}-container`}
         >
-          <img className="clouds_img" src={eval(`Nube${cloud.id}`)} alt="" />
+          <img
+            className="clouds_img"
+            src={cloudImages[cloud.id]} // Accede a las imágenes del mapa
+            alt={`Cloud ${cloud.id}`}
+          />
         </motion.div>
       ))}
     </>

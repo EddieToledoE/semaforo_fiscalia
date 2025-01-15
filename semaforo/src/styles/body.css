@@ -19,11 +19,11 @@
 .head {
   position: absolute; /* Añadido 'position: absolute;' */
   top: 09%;
-  left: 40%;
+  left: 410px;
   width: 280px;
   height: 160px;
   border-radius: 60%;
-  /* background-color: black;   */
+  /* background-color: black; */
   z-index: 3;
   cursor: pointer;
 }
@@ -35,7 +35,7 @@
   width: 60px;
   height: 30px;
   border-radius: 60%;
-   /* background-color: rgb(255, 4, 4);  */
+  /* background-color: rgb(255, 4, 4);  */
   z-index: 3;
   cursor: pointer;
 }
@@ -150,7 +150,7 @@
   z-index: 1;
   cursor: pointer;
 }
-.toggle-image-button{
+.toggle-image-button {
   position: absolute; /* Añadido 'position: absolute;' */
   top: 10px;
   left: 100px;
