@@ -9,17 +9,17 @@ Instalador del proyecto: Semaforo Setup.0.0.0.exe.
 Código fuente: Organizado en las carpetas correspondientes para facilitar su revisión y mantenimiento.
 
 📋 Instrucciones de Instalación
-Sigue estos pasos para instalar y configurar el proyecto:
-
-Descargar el instalador: Dirígete al archivo .exe (instalador) y descarga el archivo de instalación.
-
-Ejecutar el instalador: Sigue las indicaciones del asistente de instalación.
-
-Configuración: Asegúrate de cumplir con los requisitos del sistema y configurar los parámetros necesarios.
+Revisa el pdf : ManualSemaforo, para instalar el proyecto en tu sistema,
 
 Iniciar el proyecto: Una vez completada la instalación, ejecuta la aplicación.
 
-Para más detalles, consulta la guía completa de instalación.
+O si deseas ejecutar el proyecto en local desde tu computadora ejecuta los siguiente comandos:
+
+npm install
+
+npm run dev
+
+Listo! tienes el semaforo corriendo en tu computadora.
 
 📞 Contacto
 Si tienes alguna duda, sugerencia o necesitas soporte técnico, no dudes en contactarme:
