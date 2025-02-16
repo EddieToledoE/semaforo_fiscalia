@@ -5,8 +5,8 @@ import Semaforo from "./components/semaforo";
 import AgeSelector from "./components/ageSelector";
 import Tittle from "./components/tittle";
 import { motion } from "framer-motion";
-import Logo from "./assets/Logo.png";
-import Up from "./assets/UpLogo.png";	
+import Logo from "./assets/Logo2025.png";
+import Up from "./assets/UpLogo.png";
 import "./App.css";
 import Body from "./components/body";
 import Tutorial from "./components/tutorial"; // Importa el componente Tutorial
@@ -100,35 +100,39 @@ function App() {
                   ¿Listos?
                 </motion.button>
               </div>
-              <img className="logo" src={Logo} alt="Logo" />            
-              <img className="up-logo" src={Up} alt="Up Logo" />
-            </div>
-          </>
-        )}
-        {audioStarted && !selectedAge && ( // Muestra el título y el botón de inicio si no se ha seleccionado ninguna edad
-          <>
-            <div>
-              <Tittle />
-              <div className="button-container">
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="start-button"
-                  onClick={handleStart}
-                >
-                  ¡Vamos!
-                </motion.button>
-              </div>
               <img className="logo" src={Logo} alt="Logo" />
               <img className="up-logo" src={Up} alt="Up Logo" />
             </div>
           </>
         )}
+        {audioStarted &&
+          !selectedAge && ( // Muestra el título y el botón de inicio si no se ha seleccionado ninguna edad
+            <>
+              <div>
+                <Tittle />
+                <div className="button-container">
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="start-button"
+                    onClick={handleStart}
+                  >
+                    ¡Vamos!
+                  </motion.button>
+                </div>
+                <img className="logo" src={Logo} alt="Logo" />
+                <img className="up-logo" src={Up} alt="Up Logo" />
+              </div>
+            </>
+          )}
         {selectedAge === "selecting" && ( // Muestra el selector de edad si el estado es 'selecting'
           <AgeSelector onAgeSelected={handleAgeSelection} />
         )}
         {showTutorial && (
-          <Tutorial onTutorialEnd={handleTutorialEnd} selectedAge={selectedAge} />
+          <Tutorial
+            onTutorialEnd={handleTutorialEnd}
+            selectedAge={selectedAge}
+          />
         )}
         {selectedAge &&
           selectedAge !== "selecting" &&

@@ -13,6 +13,12 @@ dist-ssr
 dist-electron
 dist-installer
 
+# Dependency directories
+node_modules
+jspm_packages
+
+# .exe
+*.exe
 
 
 *.local
