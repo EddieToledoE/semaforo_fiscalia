@@ -17,8 +17,6 @@ dist-installer
 node_modules
 jspm_packages
 
-# .exe
-*.exe
 
 
 *.local
